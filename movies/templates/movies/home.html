@@ -10,70 +10,89 @@
 <body>
 <style>
     body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
 
-.container {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
+    .container {
+        width: 80%;
+        margin: auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-h1 {
-    text-align: center;
-    color: #333;
-}
+    h1 {
+        text-align: center;
+        color: #333;
+    }
 
-form {
-    text-align: center;
-    margin-bottom: 20px;
-}
+    form {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-.movies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
+    .movies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
 
-.movie-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
+    .movie-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
 
-.movie-card:hover {
-    transform: scale(1.05);
-}
+    .movie-card:hover {
+        transform: scale(1.05);
+    }
 
-.movie-card img {
-    width: 100%;
-    height: auto;
-}
+    .movie-card img {
+        width: 100%;
+        height: auto;
+    }
 
-.movie-card h3 {
-    margin: 10px;
-    color: #333;
-}
+    .movie-card h3 {
+        margin: 10px;
+        color: #333;
+    }
 
-.movie-card p {
-    margin: 10px;
-    color: #666;
-    font-size: 14px;
-}
+    .movie-card p {
+        margin: 10px;
+        color: #666;
+        font-size: 14px;
+    }
 
-.popularity {
-    font-weight: bold;
-    color: #555;
-}
+    .popularity {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .btn-match {
+        display: block;
+        text-align: center;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-match:hover {
+        background-color: #0056b3;
+    }
 </style>
     <div class="container">
         <h1>Recomandări de Filme</h1>
@@ -86,6 +105,9 @@ form {
             </select>
             <button type="submit">Caută</button>
         </form>
+
+        <!-- Adăugăm butonul pentru match filme -->
+        <a href="{% url 'movie_match' %}" class="btn-match">Filmul perfect pentru voi doi.</a>
 
         {% if movies %}
             <div class="movies-grid">
