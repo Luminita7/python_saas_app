@@ -9,6 +9,7 @@
 </head>
 <body>
 <style>
+
     body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -16,7 +17,23 @@
     background-color: #f8f9fa;
     color: #333;
 }
+.btn-back {
+    margin-top: 20px;
+    display: block;
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
 
+.btn-back:hover {
+    background-color: #5a6268;
+}
 .container {
     max-width: 800px;
     margin: 50px auto;
@@ -104,6 +121,7 @@ p {
 </style>
     <div class="container">
         <h1>Găsește un film comun</h1>
+        <center><a href="{% url 'home' %}" class="btn-back">Înapoi la pagina principală</a></center>
         <form method="get">
             <label for="movie1">Film preferat persoana 1:</label>
             <select name="movie1" id="movie1" required>
