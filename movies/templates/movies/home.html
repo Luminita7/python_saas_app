@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomandări Filme</title>
+    <link rel="stylesheet" href="{% static 'movies/styles.css' %}">
+</head>
+<body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.movie-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+}
+
+.movie-card h3 {
+    margin: 10px;
+    color: #333;
+}
+
+.movie-card p {
+    margin: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+.popularity {
+    font-weight: bold;
+    color: #555;
+}
+</style>
+    <div class="container">
+        <h1>Recomandări de Filme</h1>
+        <form method="get">
+            <label for="genre">Alege un gen:</label>
+            <select name="genre" id="genre">
+                {% for genre in genres %}
+                    <option value="{{ genre }}" {% if genre == selected_genre %}selected{% endif %}>{{ genre }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Caută</button>
+        </form>
+
+        {% if movies %}
+            <div class="movies-grid">
+                {% for movie in movies %}
+                    <div class="movie-card">
+                        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+                        <h3>{{ movie.title }}</h3>
+                        <p>{{ movie.overview }}</p>
+                        <p class="popularity">Popularitate: {{ movie.popularity }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            {% if selected_genre %}
+                <p>Nicio recomandare găsită pentru genul selectat.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <script src="{% static 'movies/scripts.js' %}"></script>
+</body>
+</html>
